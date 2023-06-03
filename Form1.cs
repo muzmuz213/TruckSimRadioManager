@@ -34,17 +34,22 @@ namespace TruckSimRadioManager
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
                 using (StreamReader sr = new StreamReader(openFileDialog1.FileName)){
+                    List<string[]> parsed_array = new List<string[]>();
                     while (sr.Peek() >= 0){
                         string line = sr.ReadLine();
                         line = line.Trim();
+
                         if (line.Contains("stream_data[")){
-                            foreach (var item in Parse_Radio_Data(line))
+                            string[] parsed_file_data = Parse_Radio_Data(line);
+                            foreach (var item in parsed_file_data)      //temp debug command
                             {
                                 Console.WriteLine(item.ToString());
                             }
+                            parsed_array.Add(parsed_file_data);
                         }
 
                     }
+                    TableGenerator.GenerateTable(parsed_array, this);
                 }
             }
             catch (Exception a){
@@ -54,7 +59,7 @@ namespace TruckSimRadioManager
             }
 
         }
-        public Array Parse_Radio_Data(string input)
+        public string[] Parse_Radio_Data(string input)
         {
             string[] substrings = input.Split('|');
             List<string> list = new List<string>();
@@ -68,6 +73,35 @@ namespace TruckSimRadioManager
             list.Add(substrings[4]);
             string[] output = list.ToArray();
             return output;
+        }
+
+        
+    }
+    public class TableGenerator
+    {
+        public static void GenerateTable(List<string[]> data, Control parentControl)
+        {
+            // Create a TableLayoutPanel
+            TableLayoutPanel tableLayout = new TableLayoutPanel();
+            tableLayout.Dock = DockStyle.Fill;
+            parentControl.Controls.Add(tableLayout);
+
+            // Set column count
+            tableLayout.ColumnCount = data[0].Length;
+
+            // Add rows and columns dynamically
+            for (int i = 0; i < data.Count; i++)
+            {
+                tableLayout.RowCount++;
+                for (int j = 0; j < data[i].Length; j++)
+                {
+                    tableLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / data[i].Length));
+                    Label label = new Label();
+                    label.Text = data[i][j];
+                    label.Dock = DockStyle.Fill;
+                    tableLayout.Controls.Add(label, j, i);
+                }
+            }
         }
     }
 }
