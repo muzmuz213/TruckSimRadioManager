@@ -37,21 +37,10 @@ namespace TruckSimRadioManager
                     while (sr.Peek() >= 0){
                         string line = sr.ReadLine();
                         line = line.Trim();
-                        if (line.Contains("stream_data[]:")){
-
-
-                            //TODO: ADD PARSE_RADIO_DATA
-                            string[] substrings = line.Split('|');
-                            string link = substrings[0];
-                            string radio_name = substrings[1];
-                            string Genre = substrings[2];
-                            string Language = substrings[3];
-                            string Bitrate = substrings[4];
-
-
-
-                            foreach (string substring in substrings) {
-                                Console.WriteLine(substring);
+                        if (line.Contains("stream_data[")){
+                            foreach (var item in Parse_Radio_Data(line))
+                            {
+                                Console.WriteLine(item.ToString());
                             }
                         }
 
@@ -65,11 +54,20 @@ namespace TruckSimRadioManager
             }
 
         }
-        public Array Parse_Radio_Data()
+        public Array Parse_Radio_Data(string input)
         {
-
-
-            return
+            string[] substrings = input.Split('|');
+            List<string> list = new List<string>();
+            string link = substrings[0].ToString();
+            string[]link2 = link.Split('"');
+            substrings[0] = link2[1];
+            list.Add(substrings[0]);
+            list.Add(substrings[1]);
+            list.Add(substrings[2]);
+            list.Add(substrings[3]);
+            list.Add(substrings[4]);
+            string[] output = list.ToArray();
+            return output;
         }
     }
 }
