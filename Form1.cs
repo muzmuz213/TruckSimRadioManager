@@ -48,7 +48,7 @@ namespace TruckSimRadioManager
                         }
                     }
 
-                    GenerateTable(parsed_array, this);
+                    GenerateTable(parsed_array, tableLayoutPanel1);
                 }
             }
             catch (Exception a)
@@ -74,20 +74,12 @@ namespace TruckSimRadioManager
             string[] output = list.ToArray();
             return output;
         }
-        public static void GenerateTable(List<string[]> data, Control parentControl)
+        public static void GenerateTable(List<string[]> data, TableLayoutPanel tableLayout)
         {
-            // Create a TableLayoutPanel
-            TableLayoutPanel tableLayout = new TableLayoutPanel();
-            tableLayout.Location = new System.Drawing.Point(29, 72);
-            tableLayout.Size = new System.Drawing.Size(698, 316);
-            tableLayout.AutoScroll = true;
-            tableLayout.BackColor = System.Drawing.Color.White;
-            tableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Bottom) |
-                System.Windows.Forms.AnchorStyles.Left) |
-                System.Windows.Forms.AnchorStyles.Right)));
-            parentControl.Controls.Add(tableLayout);
-
+            // Clear existing rows and columns
+            tableLayout.RowStyles.Clear();
+            tableLayout.ColumnStyles.Clear();
+            tableLayout.Controls.Clear();
             // Set column count
             tableLayout.ColumnCount = data[0].Length;
 
@@ -117,6 +109,22 @@ namespace TruckSimRadioManager
                     }
                 }
             }
+        }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
+        {
+            var formPopup = new Form();
+            formPopup.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutWindow = new AboutBox1();
+            aboutWindow.Show();
         }
     }
 }
