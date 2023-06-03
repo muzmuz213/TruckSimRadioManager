@@ -20,7 +20,7 @@ namespace TruckSimRadioManager
         //Browse Button
         private void Browse_button_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 FilePath_Textbox.Text = openFileDialog1.FileName;
             }
@@ -32,9 +32,13 @@ namespace TruckSimRadioManager
             {
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
-                using (StreamReader sr = new StreamReader(FilePath_Textbox.Text)){
+                using (StreamReader sr = new StreamReader(FilePath_Textbox.Text))
+                {
                     List<string[]> parsed_array = new List<string[]>();
-                    while (sr.Peek() >= 0){
+                    string[] Default = {"Radio Link","Radio Name","Genre","Language", "Bitrate" };
+                    parsed_array.Add(Default);
+                    while (sr.Peek() >= 0)
+                    {
                         string line = sr.ReadLine();
                         line = line.Trim();
                         if (line.Contains("stream_data["))
@@ -47,7 +51,8 @@ namespace TruckSimRadioManager
                     GenerateTable(parsed_array, this);
                 }
             }
-            catch (Exception a){
+            catch (Exception a)
+            {
                 // Let the user know what went wrong.
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(a.Message);
@@ -59,7 +64,7 @@ namespace TruckSimRadioManager
             string[] substrings = input.Split('|');
             List<string> list = new List<string>();
             string link = substrings[0].ToString();
-            string[]link2 = link.Split('"');
+            string[] link2 = link.Split('"');
             substrings[0] = link2[1];
             list.Add(substrings[0]);
             list.Add(substrings[1]);
@@ -77,29 +82,42 @@ namespace TruckSimRadioManager
             tableLayout.Size = new System.Drawing.Size(698, 316);
             tableLayout.AutoScroll = true;
             tableLayout.BackColor = System.Drawing.Color.White;
-            tableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | 
-                System.Windows.Forms.AnchorStyles.Bottom)| 
-                System.Windows.Forms.AnchorStyles.Left)| 
+            tableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
+                System.Windows.Forms.AnchorStyles.Bottom) |
+                System.Windows.Forms.AnchorStyles.Left) |
                 System.Windows.Forms.AnchorStyles.Right)));
             parentControl.Controls.Add(tableLayout);
+
             // Set column count
             tableLayout.ColumnCount = data[0].Length;
+
             // Add rows and columns dynamically
             for (int i = 0; i < data.Count; i++)
             {
                 tableLayout.RowCount++;
                 for (int j = 0; j < data[i].Length; j++)
                 {
-                    tableLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / data[i].Length));
-                    TextBox label = new TextBox();
-                    label.ReadOnly = true;
-                    label.Text = data[i][j];
-                    label.Dock = DockStyle.Fill;
-                    tableLayout.Controls.Add(label, j, i);
+                    if (i == 0)
+                    {
+                        // Use a different style for the column header row
+                        Label columnHeader = new Label();
+                        columnHeader.Text = data[i][j];
+                        columnHeader.Font = new System.Drawing.Font(columnHeader.Font, System.Drawing.FontStyle.Bold);
+                        columnHeader.Dock = DockStyle.Fill;
+                        tableLayout.Controls.Add(columnHeader, j, i);
+                    }
+                    else
+                    {
+                        tableLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / data[i].Length));
+                        TextBox label = new TextBox();
+                        label.ReadOnly = true;
+                        label.Text = data[i][j];
+                        label.Dock = DockStyle.Fill;
+                        tableLayout.Controls.Add(label, j, i);
+                    }
                 }
             }
+
         }
-
-
     }
 }
