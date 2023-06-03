@@ -49,7 +49,7 @@ namespace TruckSimRadioManager
                         }
 
                     }
-                    TableGenerator.GenerateTable(parsed_array, this);
+                    GenerateTable(parsed_array, this);
                 }
             }
             catch (Exception a){
@@ -74,21 +74,14 @@ namespace TruckSimRadioManager
             string[] output = list.ToArray();
             return output;
         }
-
-        
-    }
-    public class TableGenerator
-    {
         public static void GenerateTable(List<string[]> data, Control parentControl)
         {
             // Create a TableLayoutPanel
             TableLayoutPanel tableLayout = new TableLayoutPanel();
             tableLayout.Dock = DockStyle.Fill;
             parentControl.Controls.Add(tableLayout);
-
             // Set column count
             tableLayout.ColumnCount = data[0].Length;
-
             // Add rows and columns dynamically
             for (int i = 0; i < data.Count; i++)
             {
