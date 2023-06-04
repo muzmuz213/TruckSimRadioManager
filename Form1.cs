@@ -108,30 +108,7 @@ namespace TruckSimRadioManager
                 }
             }
         }
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
-        {
-            var formPopup = new AddRadioDialog();
-            formPopup.ShowDialog(this);
-            string Radio_Link_input = formPopup.textBox1.Text;
-            string Radio_Name_input = formPopup.textBox2.Text;
-            string Genre_input = formPopup.textBox3.Text;
-            string Language_input = formPopup.textBox4.Text;
-            string Bitrate_input = formPopup.textBox5.Text;
-            string[] input_array = { Radio_Link_input, Radio_Name_input, Genre_input, Language_input, Bitrate_input };
-            AddRowToTable(tableLayoutPanel1,input_array);
-            GenerateTable(ConvertTableLayoutPanelToList(tableLayoutPanel1),tableLayoutPanel1);
-        }
-        //Opens About Box
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox1 aboutWindow = new AboutBox1();
-            aboutWindow.Show();
-        }
         public void AddRowToTable(TableLayoutPanel tableLayout, string[] rowData)
         {
             // Get the index of the last row
@@ -175,6 +152,30 @@ namespace TruckSimRadioManager
             }
 
             return dataArray;
+        }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
+        {
+            var formPopup = new AddRadioDialog();
+            formPopup.ShowDialog(this);
+            string Radio_Link_input = formPopup.textBox1.Text;
+            string Radio_Name_input = formPopup.textBox2.Text;
+            string Genre_input = formPopup.textBox3.Text;
+            string Language_input = formPopup.textBox4.Text;
+            string Bitrate_input = formPopup.textBox5.Text;
+            string[] input_array = { Radio_Link_input, Radio_Name_input, Genre_input, Language_input, Bitrate_input };
+            AddRowToTable(tableLayoutPanel1, input_array);
+            GenerateTable(ConvertTableLayoutPanelToList(tableLayoutPanel1), tableLayoutPanel1);
+        }
+        //Opens About Box
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutWindow = new AboutBox1();
+            aboutWindow.Show();
         }
 
     }
