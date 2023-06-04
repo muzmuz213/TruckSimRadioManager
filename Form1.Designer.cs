@@ -108,6 +108,7 @@
             this.Remove_Radio_Station_Button.TabIndex = 4;
             this.Remove_Radio_Station_Button.Text = "Remove Radio Station";
             this.Remove_Radio_Station_Button.UseVisualStyleBackColor = true;
+            this.Remove_Radio_Station_Button.Click += new System.EventHandler(this.Remove_Radio_Station_Button_Click);
             // 
             // menuStrip1
             // 

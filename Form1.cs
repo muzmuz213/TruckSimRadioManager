@@ -70,6 +70,7 @@ namespace TruckSimRadioManager
             string[] output = list.ToArray();
             return output;
         }
+        //Generating A table given a list of string[]
         public static void GenerateTable(List<string[]> data, TableLayoutPanel tableLayout)
         {
             // Clear existing rows and columns
@@ -108,6 +109,7 @@ namespace TruckSimRadioManager
                 }
             }
         }
+        //Adds rows to tables from a given string[]
         public static void AddRowToTable(TableLayoutPanel tableLayoutPanel, string[] rowData)
         {
             // Get the column count of the table
@@ -125,6 +127,7 @@ namespace TruckSimRadioManager
                 tableLayoutPanel.Controls.Add(textBox, i, tableLayoutPanel.RowCount);
             }
         }
+        //Converts Table data to a list of string[]
         public static List<string[]> ConvertTableLayoutPanelToList(TableLayoutPanel tableLayoutPanel)
         {
             List<string[]> dataArray = new List<string[]>();
@@ -150,11 +153,12 @@ namespace TruckSimRadioManager
             dataArray.RemoveAll(array => array.All(str => string.IsNullOrWhiteSpace(str)));
             return dataArray;
         }
+        //Exit Button
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        //Add New Radio station Button
         private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
         {
             var formPopup = new AddRadioDialog();
@@ -174,19 +178,11 @@ namespace TruckSimRadioManager
             AboutBox1 aboutWindow = new AboutBox1();
             aboutWindow.Show();
         }
-        public static string PrintList(List<string[]> dataList)
+        //Remove Radio Button
+        private void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
         {
-            string output = "";
 
-            foreach (string[] row in dataList)
-            {
-                string rowString = string.Join(", ", row);
-                output += rowString + Environment.NewLine;
-            }
-
-            return output;
         }
-
     }
 
 }
