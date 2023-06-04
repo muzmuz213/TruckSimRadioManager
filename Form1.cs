@@ -108,24 +108,21 @@ namespace TruckSimRadioManager
                 }
             }
         }
-
-        public void AddRowToTable(TableLayoutPanel tableLayout, string[] rowData)
+        public static void AddRowToTable(TableLayoutPanel tableLayoutPanel, string[] rowData)
         {
-            // Get the index of the last row
-            int lastRowIndex = tableLayout.RowCount - 1;
+            // Get the column count of the table
+            int columnCount = tableLayoutPanel.ColumnCount;
 
             // Add a new row to the table
-            tableLayout.RowCount++;
+            tableLayoutPanel.RowCount++;
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
-            // Add the new row data to the table
-            for (int i = 0; i < rowData.Length; i++)
+            // Add the data to the new row
+            for (int i = 0; i < columnCount; i++)
             {
-                // Create a label for each cell in the new row
-                TextBox label = new TextBox();
-                label.Text = rowData[i];
-                label.Dock = DockStyle.Fill;
-                label.BackColor = Color.LightGreen;
-                tableLayout.Controls.Add(label, i, lastRowIndex);
+                TextBox textBox = new TextBox();
+                textBox.Text = rowData[i].ToString();
+                tableLayoutPanel.Controls.Add(textBox, i, tableLayoutPanel.RowCount);
             }
         }
         public static List<string[]> ConvertTableLayoutPanelToList(TableLayoutPanel tableLayoutPanel)
@@ -150,7 +147,7 @@ namespace TruckSimRadioManager
                 }
                 dataArray.Add(rowArray);
             }
-
+            dataArray.RemoveAll(array => array.All(str => string.IsNullOrWhiteSpace(str)));
             return dataArray;
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -176,6 +173,18 @@ namespace TruckSimRadioManager
         {
             AboutBox1 aboutWindow = new AboutBox1();
             aboutWindow.Show();
+        }
+        public static string PrintList(List<string[]> dataList)
+        {
+            string output = "";
+
+            foreach (string[] row in dataList)
+            {
+                string rowString = string.Join(", ", row);
+                output += rowString + Environment.NewLine;
+            }
+
+            return output;
         }
 
     }
