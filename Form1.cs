@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace TruckSimRadioManager
@@ -16,6 +13,7 @@ namespace TruckSimRadioManager
         public Form1()
         {
             InitializeComponent();
+            this.Text = "Truck Simulator Radio Manager";
         }
         //Browse Button
         private void Browse_button_Click(object sender, EventArgs e)
@@ -35,8 +33,6 @@ namespace TruckSimRadioManager
                 using (StreamReader sr = new StreamReader(FilePath_Textbox.Text))
                 {
                     List<string[]> parsed_array = new List<string[]>();
-                    string[] Default = {"Radio Link","Radio Name","Genre","Language", "Bitrate" };
-                    parsed_array.Add(Default);
                     while (sr.Peek() >= 0)
                     {
                         string line = sr.ReadLine();
@@ -82,6 +78,8 @@ namespace TruckSimRadioManager
             tableLayout.Controls.Clear();
             // Set column count
             tableLayout.ColumnCount = data[0].Length;
+            string[] Default = { "Radio Link", "Radio Name", "Genre", "Language", "Bitrate" };
+            data = data.Prepend(Default).ToList();
 
             // Add rows and columns dynamically
             for (int i = 0; i < data.Count; i++)
@@ -117,14 +115,68 @@ namespace TruckSimRadioManager
 
         private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
         {
-            var formPopup = new Form();
-            formPopup.ShowDialog();
+            var formPopup = new AddRadioDialog();
+            formPopup.ShowDialog(this);
+            string Radio_Link_input = formPopup.textBox1.Text;
+            string Radio_Name_input = formPopup.textBox2.Text;
+            string Genre_input = formPopup.textBox3.Text;
+            string Language_input = formPopup.textBox4.Text;
+            string Bitrate_input = formPopup.textBox5.Text;
+            string[] input_array = { Radio_Link_input, Radio_Name_input, Genre_input, Language_input, Bitrate_input };
+            AddRowToTable(tableLayoutPanel1,input_array);
+            GenerateTable(ConvertTableLayoutPanelToList(tableLayoutPanel1),tableLayoutPanel1);
         }
-
+        //Opens About Box
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox1 aboutWindow = new AboutBox1();
             aboutWindow.Show();
         }
+        public void AddRowToTable(TableLayoutPanel tableLayout, string[] rowData)
+        {
+            // Get the index of the last row
+            int lastRowIndex = tableLayout.RowCount - 1;
+
+            // Add a new row to the table
+            tableLayout.RowCount++;
+
+            // Add the new row data to the table
+            for (int i = 0; i < rowData.Length; i++)
+            {
+                // Create a label for each cell in the new row
+                TextBox label = new TextBox();
+                label.Text = rowData[i];
+                label.Dock = DockStyle.Fill;
+                label.BackColor = Color.LightGreen;
+                tableLayout.Controls.Add(label, i, lastRowIndex);
+            }
+        }
+        public static List<string[]> ConvertTableLayoutPanelToList(TableLayoutPanel tableLayoutPanel)
+        {
+            List<string[]> dataArray = new List<string[]>();
+
+            // Extract data from TableLayoutPanel
+            int rowCount = tableLayoutPanel.RowCount;
+            int columnCount = tableLayoutPanel.ColumnCount;
+
+            for (int i = 1; i < rowCount; i++)
+            {
+                string[] rowArray = new string[columnCount];
+                for (int j = 0; j < columnCount; j++)
+                {
+                    Control control = tableLayoutPanel.GetControlFromPosition(j, i);
+                    TextBox textBox = control as TextBox;
+                    if (textBox != null)
+                    {
+                        rowArray[j] = textBox.Text;
+                    }
+                }
+                dataArray.Add(rowArray);
+            }
+
+            return dataArray;
+        }
+
     }
+
 }
