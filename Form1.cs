@@ -10,6 +10,7 @@ namespace TruckSimRadioManager
 {
     public partial class Form1 : Form
     {
+        public List<string[]> List_Of_Radios;
         public Form1()
         {
             InitializeComponent();
@@ -179,10 +180,12 @@ namespace TruckSimRadioManager
             aboutWindow.Show();
         }
         //Remove Radio Button
-        private void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
+        public void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
         {
-
+            List_Of_Radios = ConvertTableLayoutPanelToList(tableLayoutPanel1);
+            RemoveRadioDialog a = new RemoveRadioDialog(List_Of_Radios);
+            a.ShowDialog(this);
         }
     }
-
 }
+
