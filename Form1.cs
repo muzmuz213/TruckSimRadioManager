@@ -158,11 +158,6 @@ namespace TruckSimRadioManager
             dataArray.RemoveAll(array => array.All(str => string.IsNullOrWhiteSpace(str)));
             return dataArray;
         }
-        //Exit Button
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         //Add New Radio station Button
         private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
         {
@@ -190,10 +185,30 @@ namespace TruckSimRadioManager
             RemoveRadioDialog a = new RemoveRadioDialog(List_Of_Radios);
             a.ShowDialog(this);
         }
-
+        //Exit Button
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        //Confirm & Exit 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string[]>final_list = ConvertTableLayoutPanelToList(tableLayoutPanel1);
+
+            using (StreamWriter writetext = new StreamWriter("live_streams2.sii"))
+            {
+                writetext.WriteLine("SiiNunit");
+                writetext.WriteLine("{");
+                writetext.WriteLine("live_stream_def : _nameless.225.8609.9300 {");
+                writetext.WriteLine(" stream_data: 313");
+                for (int i = 0; i < final_list.Count; i++)
+                {
+                        writetext.WriteLine(" stream_data[]: " + '"' + final_list[i][0] + "|" + final_list[i][1] + "|" + final_list[i][2] + "|" + final_list[i][3] + "|" + final_list[i][4] + "|" +"0" +'"');
+                }
+                writetext.WriteLine("}");
+                writetext.WriteLine("}");
+
+            }
         }
     }
 }
