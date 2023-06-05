@@ -46,7 +46,7 @@ namespace TruckSimRadioManager
                             parsed_array.Add(parsed_file_data);
                         }
                     }
-
+                    List_Of_Radios = parsed_array;
                     GenerateTable(parsed_array, tableLayoutPanel1);
                     Add_New_Radio_Station_Button.Enabled = true;
                     Remove_Radio_Station_Button.Enabled = true;
@@ -114,7 +114,58 @@ namespace TruckSimRadioManager
                 }
             }
         }
-        //Adds rows to tables from a given string[]
+        //Add New Radio station Button
+        private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
+        {
+            var formPopup = new AddRadioDialog();
+            formPopup.ShowDialog(this);
+            string Radio_Link_input = formPopup.textBox1.Text;
+            string Radio_Name_input = formPopup.textBox2.Text;
+            string Genre_input = formPopup.textBox3.Text;
+            string Language_input = formPopup.textBox4.Text;
+            string Bitrate_input = formPopup.textBox5.Text;
+            string[] input_array = { Radio_Link_input, Radio_Name_input, Genre_input, Language_input, Bitrate_input };
+            List_Of_Radios.Add(input_array);
+            GenerateTable(List_Of_Radios, tableLayoutPanel1);
+        }
+        //Opens About Box
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutWindow = new AboutBox1();
+            aboutWindow.Show();
+        }
+        //Remove Radio Button
+        public void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
+        {;
+            RemoveRadioDialog a = new RemoveRadioDialog(List_Of_Radios);
+            a.ShowDialog(this);
+        }
+        //Exit Button
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        //Confirm & Exit 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string[]> final_list = List_Of_Radios;
+
+            using (StreamWriter writetext = new StreamWriter("live_streams2.sii"))
+            {
+                writetext.WriteLine("SiiNunit");
+                writetext.WriteLine("{");
+                writetext.WriteLine("live_stream_def : _nameless.225.8609.9300 {");
+                writetext.WriteLine(" stream_data: 313");
+                for (int i = 0; i < final_list.Count; i++)
+                {
+                    writetext.WriteLine(" stream_data[]: " + '"' + final_list[i][0] + "|" + final_list[i][1] + "|" + final_list[i][2] + "|" + final_list[i][3] + "|" + final_list[i][4] + "|" + "0" + '"');
+                }
+                writetext.WriteLine("}");
+                writetext.WriteLine("}");
+            }
+            Close();
+        }
+        //UNUSED_Adds rows to tables from a given string[]
         public static void AddRowToTable(TableLayoutPanel tableLayoutPanel, string[] rowData)
         {
             // Get the column count of the table
@@ -122,7 +173,6 @@ namespace TruckSimRadioManager
 
             // Add a new row to the table
             tableLayoutPanel.RowCount++;
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
             // Add the data to the new row
             for (int i = 0; i < columnCount; i++)
@@ -132,7 +182,7 @@ namespace TruckSimRadioManager
                 tableLayoutPanel.Controls.Add(textBox, i, tableLayoutPanel.RowCount);
             }
         }
-        //Converts Table data to a list of string[]
+        //UNUSED_Converts Table data to a list of string[]
         public static List<string[]> ConvertTableLayoutPanelToList(TableLayoutPanel tableLayoutPanel)
         {
             List<string[]> dataArray = new List<string[]>();
@@ -157,58 +207,6 @@ namespace TruckSimRadioManager
             }
             dataArray.RemoveAll(array => array.All(str => string.IsNullOrWhiteSpace(str)));
             return dataArray;
-        }
-        //Add New Radio station Button
-        private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
-        {
-            var formPopup = new AddRadioDialog();
-            formPopup.ShowDialog(this);
-            string Radio_Link_input = formPopup.textBox1.Text;
-            string Radio_Name_input = formPopup.textBox2.Text;
-            string Genre_input = formPopup.textBox3.Text;
-            string Language_input = formPopup.textBox4.Text;
-            string Bitrate_input = formPopup.textBox5.Text;
-            string[] input_array = { Radio_Link_input, Radio_Name_input, Genre_input, Language_input, Bitrate_input };
-            AddRowToTable(tableLayoutPanel1, input_array);
-            GenerateTable(ConvertTableLayoutPanelToList(tableLayoutPanel1), tableLayoutPanel1);
-        }
-        //Opens About Box
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox1 aboutWindow = new AboutBox1();
-            aboutWindow.Show();
-        }
-        //Remove Radio Button
-        public void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
-        {
-            List_Of_Radios = ConvertTableLayoutPanelToList(tableLayoutPanel1);
-            RemoveRadioDialog a = new RemoveRadioDialog(List_Of_Radios);
-            a.ShowDialog(this);
-        }
-        //Exit Button
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-        //Confirm & Exit 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            List<string[]>final_list = ConvertTableLayoutPanelToList(tableLayoutPanel1);
-
-            using (StreamWriter writetext = new StreamWriter("live_streams2.sii"))
-            {
-                writetext.WriteLine("SiiNunit");
-                writetext.WriteLine("{");
-                writetext.WriteLine("live_stream_def : _nameless.225.8609.9300 {");
-                writetext.WriteLine(" stream_data: 313");
-                for (int i = 0; i < final_list.Count; i++)
-                {
-                        writetext.WriteLine(" stream_data[]: " + '"' + final_list[i][0] + "|" + final_list[i][1] + "|" + final_list[i][2] + "|" + final_list[i][3] + "|" + final_list[i][4] + "|" +"0" +'"');
-                }
-                writetext.WriteLine("}");
-                writetext.WriteLine("}");
-
-            }
         }
     }
 }
