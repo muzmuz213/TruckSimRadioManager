@@ -19,9 +19,11 @@ namespace TruckSimRadioManager
         //Browse Button
         private void Browse_button_Click(object sender, EventArgs e)
         {
+            Confirm_button.Enabled = false;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 FilePath_Textbox.Text = openFileDialog1.FileName;
+                Confirm_button.Enabled = true;
             }
         }
         //Confirm button giving a list of radios
@@ -46,6 +48,8 @@ namespace TruckSimRadioManager
                     }
 
                     GenerateTable(parsed_array, tableLayoutPanel1);
+                    Add_New_Radio_Station_Button.Enabled = true;
+                    Remove_Radio_Station_Button.Enabled = true;
                 }
             }
             catch (Exception a)
@@ -185,6 +189,11 @@ namespace TruckSimRadioManager
             List_Of_Radios = ConvertTableLayoutPanelToList(tableLayoutPanel1);
             RemoveRadioDialog a = new RemoveRadioDialog(List_Of_Radios);
             a.ShowDialog(this);
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
