@@ -50,6 +50,7 @@ namespace TruckSimRadioManager
                     GenerateTable(parsed_array, tableLayoutPanel1);
                     Add_New_Radio_Station_Button.Enabled = true;
                     Remove_Radio_Station_Button.Enabled = true;
+                    button1.Enabled = true;
                 }
             }
             catch (Exception a)
@@ -113,6 +114,7 @@ namespace TruckSimRadioManager
                     }
                 }
             }
+           
         }
         //Add New Radio station Button
         private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
@@ -132,9 +134,10 @@ namespace TruckSimRadioManager
             if (string.IsNullOrEmpty(Radio_Name_input) && string.IsNullOrEmpty(Genre_input) && string.IsNullOrEmpty(Language_input) && string.IsNullOrEmpty(Bitrate_input) && is_confirm_selected)
             {
                 MessageBox.Show("No Empty Textboxes");
-            }else if (is_confirm_selected == false)
+            }
+            else if (is_confirm_selected == false)
             {
-                
+
             }
             else
             {

@@ -160,6 +160,7 @@
             // button1
             // 
             button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            button1.Enabled = false;
             button1.Location = new System.Drawing.Point(770, 479);
             button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             button1.Name = "button1";
