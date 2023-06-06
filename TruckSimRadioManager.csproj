@@ -23,6 +23,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 	<PublishTrimmed>true</PublishTrimmed>
 	<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+	  <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>133387E994384A33458FD23C146D2F72C636F09F</ManifestCertificateThumbprint>
