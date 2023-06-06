@@ -135,14 +135,15 @@ namespace TruckSimRadioManager
             aboutWindow.Show();
         }
         //Remove Radio Button
-        private void Remove_Radio_Station_Button_Click(object sender, EventArgs e){
+        private void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
+        {
             using (RemoveRadioDialog formOptions = new RemoveRadioDialog(List_Of_Radios))
             {
                 formOptions.ShowDialog();
 
                 List_Of_Radios = formOptions.Radio_list;
             }
-            GenerateTable(List_Of_Radios,tableLayoutPanel1);
+            GenerateTable(List_Of_Radios, tableLayoutPanel1);
         }
         //Exit Button
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)

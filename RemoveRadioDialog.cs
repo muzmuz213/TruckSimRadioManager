@@ -16,6 +16,7 @@ namespace TruckSimRadioManager
         public RemoveRadioDialog(List<string[]> list_Of_Radios)
         {
             InitializeComponent();
+            this.Text = "Edit/Test Radio Stations";
             foreach (string[] array in list_Of_Radios)
             {
                 if (array.Length > 1)
