@@ -13,6 +13,7 @@ namespace TruckSimRadioManager
 {
     public partial class AddRadioDialog : Form
     {
+        public bool Is_Confirm_Selected = new bool();
         public AddRadioDialog()
         {
             InitializeComponent();
@@ -24,13 +25,29 @@ namespace TruckSimRadioManager
             bool isUri = Uri.IsWellFormedUriString(textBox1.Text, UriKind.Absolute);
             if (isUri == true)
             {
+                Is_Confirm_Selected = true;
                 this.Close();
             }
-            else if(isUri == false)
+            else if (isUri == false)
             {
-                MessageBox.Show("Invalid Radio Link", "Invalid Input",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Radio Link", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Is_Confirm_Selected = false;
+            this.Close();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            long a;
+            if (!long.TryParse(textBox5.Text, out a))
+            {
+                // If not int clear textbox text or Undo() last operation
+                textBox5.Clear();
+            }
         }
     }
 }

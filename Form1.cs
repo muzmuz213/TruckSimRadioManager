@@ -117,16 +117,31 @@ namespace TruckSimRadioManager
         //Add New Radio station Button
         private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
         {
+            bool is_confirm_selected;
             var formPopup = new AddRadioDialog();
-            formPopup.ShowDialog(this);
+            using (formPopup)
+            {
+                formPopup.ShowDialog();
+                is_confirm_selected = formPopup.Is_Confirm_Selected;
+            }
             string Radio_Link_input = formPopup.textBox1.Text;
             string Radio_Name_input = formPopup.textBox2.Text;
             string Genre_input = formPopup.textBox3.Text;
             string Language_input = formPopup.textBox4.Text;
             string Bitrate_input = formPopup.textBox5.Text;
-            string[] input_array = { Radio_Link_input, Radio_Name_input, Genre_input, Language_input, Bitrate_input };
-            List_Of_Radios.Add(input_array);
-            GenerateTable(List_Of_Radios, tableLayoutPanel1);
+            if (string.IsNullOrEmpty(Radio_Name_input) && string.IsNullOrEmpty(Genre_input) && string.IsNullOrEmpty(Language_input) && string.IsNullOrEmpty(Bitrate_input) && is_confirm_selected)
+            {
+                MessageBox.Show("No Empty Textboxes");
+            }else if (is_confirm_selected == false)
+            {
+                
+            }
+            else
+            {
+                string[] input_array = { Radio_Link_input, Radio_Name_input, Genre_input, Language_input, Bitrate_input };
+                List_Of_Radios.Add(input_array);
+                GenerateTable(List_Of_Radios, tableLayoutPanel1);
+            }
         }
         //Opens About Box
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
