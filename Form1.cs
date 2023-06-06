@@ -54,9 +54,9 @@ namespace TruckSimRadioManager
             }
             catch (Exception a)
             {
-                // Let the user know what went wrong.
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(a.Message);
+                MessageBox.Show("The file could not be read");
+                Add_New_Radio_Station_Button.Enabled = false;
+                Remove_Radio_Station_Button.Enabled = false;
             }
 
         }
@@ -135,10 +135,14 @@ namespace TruckSimRadioManager
             aboutWindow.Show();
         }
         //Remove Radio Button
-        public void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
-        {;
-            RemoveRadioDialog a = new RemoveRadioDialog(List_Of_Radios);
-            a.ShowDialog(this);
+        private void Remove_Radio_Station_Button_Click(object sender, EventArgs e){
+            using (RemoveRadioDialog formOptions = new RemoveRadioDialog(List_Of_Radios))
+            {
+                formOptions.ShowDialog();
+
+                List_Of_Radios = formOptions.Radio_list;
+            }
+            GenerateTable(List_Of_Radios,tableLayoutPanel1);
         }
         //Exit Button
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)

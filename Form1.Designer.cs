@@ -28,167 +28,169 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Confirm_button = new System.Windows.Forms.Button();
-            this.Browse_button = new System.Windows.Forms.Button();
-            this.FilePath_Textbox = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.Add_New_Radio_Station_Button = new System.Windows.Forms.Button();
-            this.Remove_Radio_Station_Button = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            Confirm_button = new System.Windows.Forms.Button();
+            Browse_button = new System.Windows.Forms.Button();
+            FilePath_Textbox = new System.Windows.Forms.TextBox();
+            openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            Add_New_Radio_Station_Button = new System.Windows.Forms.Button();
+            Remove_Radio_Station_Button = new System.Windows.Forms.Button();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            button1 = new System.Windows.Forms.Button();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // Confirm_button
             // 
-            this.Confirm_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Confirm_button.Enabled = false;
-            this.Confirm_button.Location = new System.Drawing.Point(668, 27);
-            this.Confirm_button.Name = "Confirm_button";
-            this.Confirm_button.Size = new System.Drawing.Size(72, 49);
-            this.Confirm_button.TabIndex = 0;
-            this.Confirm_button.Text = "Get a list of radios from selected file";
-            this.Confirm_button.UseVisualStyleBackColor = true;
-            this.Confirm_button.Click += new System.EventHandler(this.Confirm_button_Click);
+            Confirm_button.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            Confirm_button.Enabled = false;
+            Confirm_button.Location = new System.Drawing.Point(779, 31);
+            Confirm_button.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Confirm_button.Name = "Confirm_button";
+            Confirm_button.Size = new System.Drawing.Size(84, 57);
+            Confirm_button.TabIndex = 0;
+            Confirm_button.Text = "Get a list of radios from selected file";
+            Confirm_button.UseVisualStyleBackColor = true;
+            Confirm_button.Click += Confirm_button_Click;
             // 
             // Browse_button
             // 
-            this.Browse_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Browse_button.Location = new System.Drawing.Point(587, 27);
-            this.Browse_button.Name = "Browse_button";
-            this.Browse_button.Size = new System.Drawing.Size(72, 49);
-            this.Browse_button.TabIndex = 1;
-            this.Browse_button.Text = "Browse Files";
-            this.Browse_button.UseVisualStyleBackColor = true;
-            this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
+            Browse_button.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            Browse_button.Location = new System.Drawing.Point(685, 31);
+            Browse_button.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Browse_button.Name = "Browse_button";
+            Browse_button.Size = new System.Drawing.Size(84, 57);
+            Browse_button.TabIndex = 1;
+            Browse_button.Text = "Browse Files";
+            Browse_button.UseVisualStyleBackColor = true;
+            Browse_button.Click += Browse_button_Click;
             // 
             // FilePath_Textbox
             // 
-            this.FilePath_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilePath_Textbox.Location = new System.Drawing.Point(12, 27);
-            this.FilePath_Textbox.MinimumSize = new System.Drawing.Size(542, 20);
-            this.FilePath_Textbox.Name = "FilePath_Textbox";
-            this.FilePath_Textbox.ReadOnly = true;
-            this.FilePath_Textbox.Size = new System.Drawing.Size(569, 20);
-            this.FilePath_Textbox.TabIndex = 2;
-            this.FilePath_Textbox.Text = "\r\n\r\n";
+            FilePath_Textbox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            FilePath_Textbox.Location = new System.Drawing.Point(14, 31);
+            FilePath_Textbox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            FilePath_Textbox.MinimumSize = new System.Drawing.Size(632, 20);
+            FilePath_Textbox.Name = "FilePath_Textbox";
+            FilePath_Textbox.ReadOnly = true;
+            FilePath_Textbox.Size = new System.Drawing.Size(663, 23);
+            FilePath_Textbox.TabIndex = 2;
+            FilePath_Textbox.Text = "\r\n\r\n";
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.InitialDirectory = "Documents";
+            openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.InitialDirectory = "Documents";
             // 
             // Add_New_Radio_Station_Button
             // 
-            this.Add_New_Radio_Station_Button.AutoSize = true;
-            this.Add_New_Radio_Station_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Add_New_Radio_Station_Button.Enabled = false;
-            this.Add_New_Radio_Station_Button.Location = new System.Drawing.Point(12, 53);
-            this.Add_New_Radio_Station_Button.MaximumSize = new System.Drawing.Size(0, 23);
-            this.Add_New_Radio_Station_Button.MinimumSize = new System.Drawing.Size(282, 23);
-            this.Add_New_Radio_Station_Button.Name = "Add_New_Radio_Station_Button";
-            this.Add_New_Radio_Station_Button.Size = new System.Drawing.Size(282, 23);
-            this.Add_New_Radio_Station_Button.TabIndex = 3;
-            this.Add_New_Radio_Station_Button.Text = "Add New Radio Station";
-            this.Add_New_Radio_Station_Button.UseVisualStyleBackColor = true;
-            this.Add_New_Radio_Station_Button.Click += new System.EventHandler(this.Add_New_Radio_Station_Button_Click);
+            Add_New_Radio_Station_Button.AutoSize = true;
+            Add_New_Radio_Station_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            Add_New_Radio_Station_Button.Enabled = false;
+            Add_New_Radio_Station_Button.Location = new System.Drawing.Point(14, 61);
+            Add_New_Radio_Station_Button.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Add_New_Radio_Station_Button.MaximumSize = new System.Drawing.Size(0, 27);
+            Add_New_Radio_Station_Button.MinimumSize = new System.Drawing.Size(329, 27);
+            Add_New_Radio_Station_Button.Name = "Add_New_Radio_Station_Button";
+            Add_New_Radio_Station_Button.Size = new System.Drawing.Size(329, 27);
+            Add_New_Radio_Station_Button.TabIndex = 3;
+            Add_New_Radio_Station_Button.Text = "Add New Radio Station";
+            Add_New_Radio_Station_Button.UseVisualStyleBackColor = true;
+            Add_New_Radio_Station_Button.Click += Add_New_Radio_Station_Button_Click;
             // 
             // Remove_Radio_Station_Button
             // 
-            this.Remove_Radio_Station_Button.AutoSize = true;
-            this.Remove_Radio_Station_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Remove_Radio_Station_Button.Enabled = false;
-            this.Remove_Radio_Station_Button.Location = new System.Drawing.Point(299, 53);
-            this.Remove_Radio_Station_Button.MaximumSize = new System.Drawing.Size(0, 23);
-            this.Remove_Radio_Station_Button.MinimumSize = new System.Drawing.Size(282, 23);
-            this.Remove_Radio_Station_Button.Name = "Remove_Radio_Station_Button";
-            this.Remove_Radio_Station_Button.Size = new System.Drawing.Size(282, 23);
-            this.Remove_Radio_Station_Button.TabIndex = 4;
-            this.Remove_Radio_Station_Button.Text = "Remove Radio Station";
-            this.Remove_Radio_Station_Button.UseVisualStyleBackColor = true;
-            this.Remove_Radio_Station_Button.Click += new System.EventHandler(this.Remove_Radio_Station_Button_Click);
+            Remove_Radio_Station_Button.AutoSize = true;
+            Remove_Radio_Station_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            Remove_Radio_Station_Button.Enabled = false;
+            Remove_Radio_Station_Button.Location = new System.Drawing.Point(349, 61);
+            Remove_Radio_Station_Button.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Remove_Radio_Station_Button.MaximumSize = new System.Drawing.Size(0, 27);
+            Remove_Radio_Station_Button.MinimumSize = new System.Drawing.Size(329, 27);
+            Remove_Radio_Station_Button.Name = "Remove_Radio_Station_Button";
+            Remove_Radio_Station_Button.Size = new System.Drawing.Size(329, 27);
+            Remove_Radio_Station_Button.TabIndex = 4;
+            Remove_Radio_Station_Button.Text = "Edit/Test Radio Stations";
+            Remove_Radio_Station_Button.UseVisualStyleBackColor = true;
+            Remove_Radio_Station_Button.Click += Remove_Radio_Station_Button_Click;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(747, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, aboutToolStripMenuItem });
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            menuStrip1.Size = new System.Drawing.Size(872, 24);
+            menuStrip1.TabIndex = 5;
+            menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.fileToolStripMenuItem.Text = "Exit";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            fileToolStripMenuItem.Text = "Exit";
+            fileToolStripMenuItem.Click += fileToolStripMenuItem_Click;
             // 
             // aboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 83);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(727, 326);
-            this.tableLayoutPanel1.TabIndex = 6;
+            tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tableLayoutPanel1.AutoScroll = true;
+            tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Location = new System.Drawing.Point(15, 96);
+            tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(848, 376);
+            tableLayoutPanel1.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(660, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Confirm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            button1.Location = new System.Drawing.Point(770, 479);
+            button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(88, 27);
+            button1.TabIndex = 0;
+            button1.Text = "Confirm";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.Remove_Radio_Station_Button);
-            this.Controls.Add(this.Add_New_Radio_Station_Button);
-            this.Controls.Add(this.FilePath_Textbox);
-            this.Controls.Add(this.Browse_button);
-            this.Controls.Add(this.Confirm_button);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(763, 489);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(872, 519);
+            Controls.Add(button1);
+            Controls.Add(tableLayoutPanel1);
+            Controls.Add(Remove_Radio_Station_Button);
+            Controls.Add(Add_New_Radio_Station_Button);
+            Controls.Add(FilePath_Textbox);
+            Controls.Add(Browse_button);
+            Controls.Add(Confirm_button);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MinimumSize = new System.Drawing.Size(888, 558);
+            Name = "Form1";
+            Text = "Form1";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
