@@ -188,6 +188,9 @@ namespace TruckSimRadioManager
             }
             Close();
         }
+
+
+
         //UNUSED_Adds rows to tables from a given string[]
         public static void AddRowToTable(TableLayoutPanel tableLayoutPanel, string[] rowData)
         {

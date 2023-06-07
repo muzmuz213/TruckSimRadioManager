@@ -57,5 +57,15 @@ namespace TruckSimRadioManager
         {
             Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var formPopup = new Mp3StreamingPanel();
+            using (formPopup)
+            {
+                formPopup.textBoxStreamingUrl.Text = Radio_list[checkedListBox1.SelectedIndex][0];
+                formPopup.ShowDialog();
+            }
+        }
     }
 }
