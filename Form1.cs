@@ -53,7 +53,7 @@ namespace TruckSimRadioManager
                     button1.Enabled = true;
                 }
             }
-            catch (Exception a)
+            catch (Exception)
             {
                 MessageBox.Show("The file could not be read");
                 Add_New_Radio_Station_Button.Enabled = false;
@@ -114,7 +114,7 @@ namespace TruckSimRadioManager
                     }
                 }
             }
-           
+
         }
         //Add New Radio station Button
         private void Add_New_Radio_Station_Button_Click(object sender, EventArgs e)
@@ -145,12 +145,6 @@ namespace TruckSimRadioManager
                 List_Of_Radios.Add(input_array);
                 GenerateTable(List_Of_Radios, tableLayoutPanel1);
             }
-        }
-        //Opens About Box
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox1 aboutWindow = new AboutBox1();
-            aboutWindow.Show();
         }
         //Remove Radio Button
         private void Remove_Radio_Station_Button_Click(object sender, EventArgs e)
