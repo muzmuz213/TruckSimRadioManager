@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,10 +38,15 @@ namespace TruckSimRadioManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // First show the index and check state of all selected items.
+            List<int> list = new List<int>();
             foreach (int indexChecked in checkedListBox1.CheckedIndices)
             {
-                Radio_list.Remove(Radio_list[indexChecked]);
+                list.Add(indexChecked);
+            }
+            list.Reverse();
+            foreach (int i in list)
+            {
+                Radio_list.Remove(Radio_list[i]);
             }
             checkedListBox1.Items.Clear();
             foreach (string[] array in Radio_list)
