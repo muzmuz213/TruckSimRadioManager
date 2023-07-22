@@ -13,7 +13,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TruckSimRadioManager
 {
@@ -72,7 +71,6 @@ namespace TruckSimRadioManager
             try
             {
                 stream = httpClient.GetStreamAsync(url).Result;
-
             }
             catch (Exception e)
             {

@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +23,6 @@ namespace TruckSimRadioManager
                 {
                     string secondString = array[1];
                     checkedListBox1.Items.Add(secondString);
-                    checkedListBox1.CheckOnClick = true;
                 }
             }
             Radio_list = list_Of_Radios;
