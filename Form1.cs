@@ -131,7 +131,7 @@ namespace TruckSimRadioManager
             string Genre_input = formPopup.textBox3.Text;
             string Language_input = formPopup.textBox4.Text;
             string Bitrate_input = formPopup.textBox5.Text;
-            if (string.IsNullOrEmpty(Radio_Name_input) && string.IsNullOrEmpty(Genre_input) && string.IsNullOrEmpty(Language_input) && string.IsNullOrEmpty(Bitrate_input) && is_confirm_selected)
+            if (string.IsNullOrEmpty(Radio_Name_input) || string.IsNullOrEmpty(Genre_input) || string.IsNullOrEmpty(Language_input) || string.IsNullOrEmpty(Bitrate_input) || is_confirm_selected)
             {
                 MessageBox.Show("No Empty Textboxes");
             }
