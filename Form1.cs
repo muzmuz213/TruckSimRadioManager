@@ -228,6 +228,11 @@ namespace TruckSimRadioManager
             dataArray.RemoveAll(array => array.All(str => string.IsNullOrWhiteSpace(str)));
             return dataArray;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -88,7 +88,7 @@
             Add_New_Radio_Station_Button.AutoSize = true;
             Add_New_Radio_Station_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             Add_New_Radio_Station_Button.Enabled = false;
-            Add_New_Radio_Station_Button.Location = new System.Drawing.Point(14, 61);
+            Add_New_Radio_Station_Button.Location = new System.Drawing.Point(348, 61);
             Add_New_Radio_Station_Button.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Add_New_Radio_Station_Button.MaximumSize = new System.Drawing.Size(0, 27);
             Add_New_Radio_Station_Button.MinimumSize = new System.Drawing.Size(329, 27);
@@ -104,7 +104,7 @@
             Remove_Radio_Station_Button.AutoSize = true;
             Remove_Radio_Station_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             Remove_Radio_Station_Button.Enabled = false;
-            Remove_Radio_Station_Button.Location = new System.Drawing.Point(349, 61);
+            Remove_Radio_Station_Button.Location = new System.Drawing.Point(14, 61);
             Remove_Radio_Station_Button.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Remove_Radio_Station_Button.MaximumSize = new System.Drawing.Size(0, 27);
             Remove_Radio_Station_Button.MinimumSize = new System.Drawing.Size(329, 27);
@@ -114,6 +114,7 @@
             Remove_Radio_Station_Button.Text = "Edit/Test Radio Stations";
             Remove_Radio_Station_Button.UseVisualStyleBackColor = true;
             Remove_Radio_Station_Button.Click += Remove_Radio_Station_Button_Click;
+
             // 
             // menuStrip1
             // 
@@ -140,7 +141,7 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.Location = new System.Drawing.Point(15, 96);
+            tableLayoutPanel1.Location = new System.Drawing.Point(14, 96);
             tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -167,10 +168,10 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(872, 519);
-            Controls.Add(button1);
-            Controls.Add(tableLayoutPanel1);
-            Controls.Add(Remove_Radio_Station_Button);
             Controls.Add(Add_New_Radio_Station_Button);
+            Controls.Add(button1);
+            Controls.Add(Remove_Radio_Station_Button);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(FilePath_Textbox);
             Controls.Add(Browse_button);
             Controls.Add(Confirm_button);
@@ -180,6 +181,7 @@
             MinimumSize = new System.Drawing.Size(888, 558);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

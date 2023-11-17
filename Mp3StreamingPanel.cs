@@ -122,7 +122,20 @@ namespace TruckSimRadioManager
                                     TimeSpan.FromSeconds(20); // allow us to get well ahead of ourselves
                                 //this.bufferedWaveProvider.BufferedDuration = 250;
                             }
-                            int decompressed = decompressor.DecompressFrame(frame, buffer, 0);
+                            int decompressed = 0;
+                            try
+                            {
+                                decompressed = decompressor.DecompressFrame(frame, buffer, 0);
+                            }
+                            catch (Exception e)
+                            {
+                                ShowError(e.Message);
+                                return;
+                            }
+                            //catch (NAudio.MmException)
+                            //{
+                            //    break;
+                            //}
                             //Debug.WriteLine(String.Format("Decompressed a frame {0}", decompressed));
                             bufferedWaveProvider.AddSamples(buffer, 0, decompressed);
                         }
